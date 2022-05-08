@@ -1,0 +1,64 @@
+@model IEnumerable<DVDRental.Models.DVDTitle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 style="padding-top: 25px; padding-bottom: 20px;">DVD Details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                DVD
+            </th>
+            <th>
+                Release
+            </th>
+            <th>
+                Standard Charge
+            </th>
+            <th>
+                Penalty
+            </th>
+         
+            <th>
+               Studio
+            </th>
+            <th>
+                Producer
+            </th>
+            <th>
+                Cast Members
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateReleased)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StandardCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PenaltyCharge)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Studio.StudioName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producer.ProducerName)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.actors)
+            </th>
+        </tr>
+}
+    </tbody>
+</table>

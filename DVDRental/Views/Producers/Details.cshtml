@@ -1,0 +1,23 @@
+﻿@model DVDRental.Models.Producer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1  style="padding-top: 25px; padding-bottom: 20px;"> Producer Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProducerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProducerName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ProducerNumber">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

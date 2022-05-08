@@ -1,0 +1,49 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
+}
+
+<h1 style="padding: 5px;">@ViewData["Title"]</h1>
+
+
+            <form id="account" method="post">
+                <h2>Use a local account to log in.</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating" style="padding: 10px;">
+                    <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" />
+                    <label asp-for="Input.Username" class="form-label" style="font-size: 25px;"></label>
+                    <span asp-validation-for="Input.Username" class="text-danger"></span>
+                </div>
+                <div class="form-floating"  style="padding: 10px;">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                    <label asp-for="Input.Password" class="form-label" style="font-size: 25px;"></label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe" class="form-label">
+                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <button style="padding: 20px;" id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+                <div>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                </div>
+            </form>
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    var member = (Member)ViewData["results"];
+    var loans = (IEnumerable<Loan>)ViewData["loans"];
+}
+<h1 style="padding-top: 25px; padding-bottom: 20px;">View Loan History of a specific user</h1>
+@using (Html.BeginForm())
+{
+    <p style="padding: 15px;">
+        Member's last name: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+       
+            <th>
+               DVD Number
+            </th>
+            <th>
+               Title 
+            </th>
+            <th>
+                DVD Returned?
+            </th>
+            <th>
+                Copy Number
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in loans)
+            {
+                <tr>
+                 
+                    <th>
+                        @Html.DisplayFor(modelItem=> item.DVDCopy.DVDNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem=> item.DVDCopy.DVDTitle.title)
+                    </th>
+                    <th>
+                    @if (item.DateReturned == null)
+                    {
+                        @Html.Encode("No")
+                    }
+                    else {
+                        @Html.Encode("Yes")
+                    }
+                </th>
+                    <th>
+                        @Html.DisplayFor(modelItem=> item.CopyNumber)
+                    </th>
+                </tr>
+            }
+    </tbody>
+</table>
+

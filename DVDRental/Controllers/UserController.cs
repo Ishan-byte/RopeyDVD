@@ -12,24 +12,38 @@ namespace DVDRental.Controllers
         private readonly ApplicationDbContext _context;
         private UserManager<ApplicationUser> _userManager;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly ILogger<UserController> _logger;
 
         public UserController(ApplicationDbContext context,
                               UserManager<ApplicationUser> userManager,
                               IUserStore<ApplicationUser> userStore,
-                              ILogger<UserController> logger)
+                              ILogger<UserController> logger,
+                              RoleManager<IdentityRole> roleManager
+                              )
         {
+            _roleManager = roleManager;
             _context = context;
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
+
             _logger = logger;
         }
+        private async Task<List<string>> GetUserRoles(ApplicationUser user)
+        {
+            return new List<string>(await _userManager.GetRolesAsync(user));
+        }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var users = _context.Users.ToList();
+
+            foreach(ApplicationUser user in users)
+            {
+                user.Roles = await GetUserRoles(user);
+            }
             return View(users);
         }
 
@@ -44,7 +58,6 @@ namespace DVDRental.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateUserInputModel model)
         {
-
             if (ModelState.IsValid)
             {
                 var checkUser = await _userManager.FindByNameAsync(model.Email);
@@ -90,6 +103,8 @@ namespace DVDRental.Controllers
             var editUser = new EditUserViewModel
             {
                 Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,   
                 Email = user.Email,
                 Password = string.Empty
             };
@@ -97,7 +112,6 @@ namespace DVDRental.Controllers
             return View(editUser);
         }
 
-  
         public async Task<IActionResult> Delete(string id)
         {
 

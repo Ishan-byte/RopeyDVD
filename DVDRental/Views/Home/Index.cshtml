@@ -7,8 +7,9 @@
    <body>
        <div class="container">
            <div class="row">
-
-<div class="col" style="margin-bottom: 50px;">
+                @if (User.IsInRole("User") || User.IsInRole("Manager") || User.IsInRole("Assistant") )
+                {
+                <div class="col" style="margin-bottom: 50px;">
        <div class="card" style="height: 25rem; width: 15rem;">
         <img class="card-img-top" style="padding: 30px" src=
         "https://cdn-icons-png.flaticon.com/512/1909/1909819.png" alt="Card image cap">
@@ -28,69 +29,84 @@
         </div>
        </div>
 </div>
+    
+                }
+                @if (User.IsInRole("Manager") || User.IsInRole("Assistant"))
+                {
 
-<div class="col" style="margin-bottom: 10px;">
-       <div class="card" style="height: 25rem; width: 15rem;">
-        <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/1041/1041014.png" alt="Card image cap">
+                    <div class="col" style="margin-bottom: 10px;">
+                        <div class="card" style="height: 25rem; width: 15rem;">
+                            <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/1041/1041014.png" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">View loan history of a specific user of the past 31 days. </p>
+                                <a href="/MemberLoans" class="btn btn-primary">Member's Loan History</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-bottom: 10px;">
+                        <div class="card" style="height: 25rem; width: 15rem;">
+                            <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/2505/2505871.png" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Detailed information of all the available DVD's in the shop.</p>
+                                <a href="/DVDDetails" class="btn btn-primary">DVD Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col" style="margin-bottom: 10px;">
+                        <div class="card" style="height: 25rem; width: 15rem;">
+                            <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/7186/7186732.png" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Enter a Member number for viewing their latest loan information.</p>
+                                <a href="/DVDLoan" class="btn btn-primary">Latest Loan Information</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-bottom: 10px;">
+                        <div class="card" style="height: 25rem; width: 15rem;">
+                            <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/172/172120.png" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Provide Member and DVD information for registering a new loan.</p>
+                                <a href="/Loans/Create" class="btn btn-primary">New Loan</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-bottom: 10px;">
+                        <div class="card" style="height: 25rem; width: 15rem;">
+                            <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/415/415086.png" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Edit loan regarding information as well as viewing loan details.</p>
+                                <a href="/Loans" class="btn btn-primary">Edit Loans</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-bottom: 10px;">
+                        <div class="card" style="height: 25rem; width: 15rem;">
+                            <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/6596/6596910.png" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">View all the membership holders of the shop and their loan information.</p>
+                                <a href="/MemberDetails" class="btn btn-primary">Member Information</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-bottom: 10px;">
+                        <div class="card" style="height: 25rem; width: 15rem;">
+        <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/7420/7420919.png" alt="Card image cap">
         <div class="card-body">
-        <p class="card-text">View loan history of a specific user of the past 31 days. </p>
-        <a href="/MemberLoans" class="btn btn-primary">Member's Loan History</a>
+        <p class="card-text">Add new DVD and its related information.</p>
+        <a href="/DVDTitles/Create" class="btn btn-primary">Add New DVD</a>
         </div>
+        
        </div>
-</div>
-
-<div class="col" style="margin-bottom: 10px;">
-       <div class="card" style="height: 25rem; width: 15rem;">
-        <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/2505/2505871.png" alt="Card image cap">
-        <div class="card-body">
-        <p class="card-text">Detailed information of all the available DVD's in the shop.</p>
-        <a href="/DVDDetails" class="btn btn-primary">DVD Details</a>
-        </div>
+       
        </div>
-</div>
-
-
-<div class="col" style="margin-bottom: 10px;">
-       <div class="card" style="height: 25rem; width: 15rem;">
-        <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/7186/7186732.png" alt="Card image cap">
-        <div class="card-body">
-        <p class="card-text">Enter a Member number for viewing their latest loan information.</p>
-        <a href="/DVDLoan" class="btn btn-primary">Latest Loan Information</a>
-        </div>
-       </div>
-</div>
-
-<div class="col" style="margin-bottom: 10px;">
-        <div class="card" style="height: 25rem; width: 15rem;">
-        <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/172/172120.png" alt="Card image cap">
-        <div class="card-body">
-        <p class="card-text">Provide Member and DVD information for registering a new loan.</p>
-        <a href="/Loans/Create" class="btn btn-primary">New Loan</a>
-        </div>
-       </div>
-</div>
-
-          <div class="col" style="margin-bottom: 10px;">
-        <div class="card" style="height: 25rem; width: 15rem;">
-        <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/415/415086.png" alt="Card image cap">
-        <div class="card-body">
-        <p class="card-text">Edit loan regarding information as well as viewing loan details.</p>
-        <a href="/Loans" class="btn btn-primary">Edit Loans</a>
-        </div>
-       </div>
-       </div>
-
-        <div class="col" style="margin-bottom: 10px;">
-        <div class="card" style="height: 25rem; width: 15rem;">
-        <img style="padding: 30px" class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/6596/6596910.png" alt="Card image cap">
-        <div class="card-body">
-        <p class="card-text">View all the membership holders of the shop and their loan information.</p>
-        <a href="/MemberDetails" class="btn btn-primary">Member Information</a>
-        </div>
-       </div>
-       </div>
-
-       </div>
-       </div>
+       }
+       
    </body>
 </div>

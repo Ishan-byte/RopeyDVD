@@ -9,6 +9,7 @@ namespace DVDRental.Models
         {
             DVDCopy    = new HashSet<DVDCopy>();
             CastMember = new HashSet<CastMember>();
+            ActorList = new List<Actor>();
         }
         [Key]
         public int DVDNumber { get; set; }
@@ -42,6 +43,10 @@ namespace DVDRental.Models
 
         [NotMapped]
         public virtual string actors{ get; set; }
+
+
+        [NotMapped]
+        public virtual List<Actor> ActorList { get; set; }
 
     }
 }

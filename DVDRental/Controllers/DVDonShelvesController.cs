@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using DVDRental.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DVDRental.Controllers
 {
+    [Authorize(Roles = "User, Manager, Assistant")]
     public class DVDonShelvesController: Controller
     {
 
